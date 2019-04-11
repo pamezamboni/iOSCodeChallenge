@@ -34,6 +34,16 @@ class PostsViewController: UIViewController {
     
     weak var postsDelegate: PostsListDelegate?
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(self.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+        
+        return refreshControl
+    }()
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -51,6 +61,7 @@ class PostsViewController: UIViewController {
         tableView.rowHeight = 160
         tableView.estimatedRowHeight = 64
         tableView.tableFooterView = UIView()
+        tableView.addSubview(self.refreshControl)
     }
     
     func setup() {
@@ -78,6 +89,11 @@ class PostsViewController: UIViewController {
         }
         tableView.deleteRows(at: allIndexPath, with: .left)
         tableView.endUpdates()
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        getAllPosts()
+        refreshControl.endRefreshing()
     }
 }
 
