@@ -44,6 +44,12 @@ class PostDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func imageTapped(_ sender: Any) {
+        if let image = imageView.image {
+            let customModal = showImageInModal(image: image)
+            self.present(customModal, animated: true, completion: nil)
+        }
+    }
 }
 
 extension PostDetailViewController: PostsListDelegate {

@@ -26,6 +26,9 @@
 		3D58FC2E225FCE8900372399 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC2D225FCE8900372399 /* PostResponse.swift */; };
 		3D58FC30225FD8D900372399 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC2F225FD8D900372399 /* PostDetailViewController.swift */; };
 		3D58FC32225FE3B700372399 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC31225FE3B700372399 /* Int+Extensions.swift */; };
+		3D58FC35225FEEF900372399 /* CustomModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D58FC34225FEEF800372399 /* CustomModalViewController.storyboard */; };
+		3D58FC37225FEF1000372399 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC36225FEF1000372399 /* CustomModalViewController.swift */; };
+		3D58FC39225FEF8500372399 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC38225FEF8500372399 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		3D58FC2D225FCE8900372399 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		3D58FC2F225FD8D900372399 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		3D58FC31225FE3B700372399 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		3D58FC34225FEEF800372399 /* CustomModalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomModalViewController.storyboard; sourceTree = "<group>"; };
+		3D58FC36225FEF1000372399 /* CustomModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
+		3D58FC38225FEF8500372399 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		3D58FBF8225FADFE00372399 /* iOSCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				3D58FC33225FEEE400372399 /* Design */,
 				3D58FC23225FC2D300372399 /* Service */,
 				3D58FC17225FBE9D00372399 /* Models */,
 				3D58FC14225FBE6500372399 /* Utils */,
@@ -148,6 +155,7 @@
 				3D58FC1B225FC08B00372399 /* UIImageView+Extensions.swift */,
 				3D58FC29225FC55300372399 /* NSError+Extensions.swift */,
 				3D58FC31225FE3B700372399 /* Int+Extensions.swift */,
+				3D58FC38225FEF8500372399 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,6 +176,15 @@
 				3D58FC25225FC2E900372399 /* PostsWorker.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		3D58FC33225FEEE400372399 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				3D58FC34225FEEF800372399 /* CustomModalViewController.storyboard */,
+				3D58FC36225FEF1000372399 /* CustomModalViewController.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +247,7 @@
 			files = (
 				3D58FC04225FAE0000372399 /* LaunchScreen.storyboard in Resources */,
 				3D58FC01225FAE0000372399 /* Assets.xcassets in Resources */,
+				3D58FC35225FEEF900372399 /* CustomModalViewController.storyboard in Resources */,
 				3D58FC0E225FAEB600372399 /* PostsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +263,7 @@
 				3D58FC10225FAEF400372399 /* PostsViewController.swift in Sources */,
 				3D58FC2C225FC62900372399 /* PostsAPIClient.swift in Sources */,
 				3D58FBFA225FADFE00372399 /* AppDelegate.swift in Sources */,
+				3D58FC39225FEF8500372399 /* UIViewController+Extensions.swift in Sources */,
 				3D58FC13225FBD8B00372399 /* PostTableViewCell.swift in Sources */,
 				3D58FC32225FE3B700372399 /* Int+Extensions.swift in Sources */,
 				3D58FC20225FC17300372399 /* PostsInteractor.swift in Sources */,
@@ -255,6 +274,7 @@
 				3D58FC16225FBE7400372399 /* Constants.swift in Sources */,
 				3D58FC22225FC1C200372399 /* PostsPresenter.swift in Sources */,
 				3D58FC2A225FC55300372399 /* NSError+Extensions.swift in Sources */,
+				3D58FC37225FEF1000372399 /* CustomModalViewController.swift in Sources */,
 				3D58FC19225FBEA900372399 /* Post.swift in Sources */,
 				3D58FC26225FC2E900372399 /* PostsWorker.swift in Sources */,
 			);

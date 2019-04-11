@@ -15,7 +15,7 @@ extension Int {
     
     func correctSinceDateString() -> String {
         let (y, M, d, h, m, s) = secondsToYearsMonthsDaysHoursMinutesSeconds()
-        var stringDate: String = "now"
+        var stringDate: String = ""
         if y != 0 {
             stringDate = "\(y) \(y == 1 ? "year" : "years")"
         } else if M != 0 {
@@ -29,8 +29,8 @@ extension Int {
         } else if s != 0 {
             stringDate = "\(s)s"
         }
-        
-        return stringDate
+        let fullStringDate = !stringDate.isEmpty ? "\(stringDate) ago" : "now"
+        return fullStringDate
         
     }
 }
