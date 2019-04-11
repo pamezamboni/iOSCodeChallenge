@@ -15,9 +15,23 @@ protocol PostsPresentationLogic {
 class PostsPresenter: PostsPresentationLogic {
     weak var viewController: PostsDisplayLogic?
     
-    func presentPosts(response: PostsViewModels.Data.Response)
-    {
-        let viewModel = PostsViewModels.Data.ViewModel(posts: response.posts)
+    func presentPosts(response: PostsViewModels.Data.Response) {
+        
+        var allPosts: [Post] = []
+        
+        if let postResponse = response.posts {
+            let posts = postResponse.data.children
+            for item in posts {
+                let post = Post()
+                post.title = item.data.title
+                post.author = item.data.author
+                post.thumbnailUrlString = item.data.thumbnail
+                post.comments = item.data.numComments
+                allPosts.append(post)
+            }
+        }
+        
+        let viewModel = PostsViewModels.Data.ViewModel(posts: allPosts)
         viewController?.displayPosts(viewModel: viewModel)
     }
 }

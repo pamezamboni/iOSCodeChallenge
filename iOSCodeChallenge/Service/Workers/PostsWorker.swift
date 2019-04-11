@@ -9,12 +9,14 @@
 import UIKit
 
 protocol PostsWorkerProtocol {
-    func loadPostsFromServer(response: @escaping ([Post]?) -> ())
+    func loadPostsFromServer(response: @escaping (PostResponse?) -> ())
 }
 
 class PostsWorker: PostsWorkerProtocol {
     
-    func loadPostsFromServer(response: @escaping ([Post]?) -> ()) {
-        //call to API client
+    func loadPostsFromServer(response: @escaping (PostResponse?) -> ()) {
+        APIClient.sharedInstance.loadPosts(withCallBack: { (result, error) in
+            response(result)
+        })
     }
 }

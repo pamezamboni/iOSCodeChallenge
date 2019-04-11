@@ -61,7 +61,7 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return allPosts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,10 +74,14 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.authorLb.text = post.author
         cell.entryDateLb.text = post.entryDate?.description
         if let urlString = post.thumbnailUrlString {
-            cell.imageView?.download(from: urlString)
+            cell.thumbnailImg?.download(from: urlString)
         }
         cell.commentsCountLb.text = post.comments?.description
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

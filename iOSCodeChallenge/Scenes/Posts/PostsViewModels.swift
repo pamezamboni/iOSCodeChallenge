@@ -18,7 +18,7 @@ enum PostsViewModels
         }
         
         struct Response {
-            var posts: [Post]? = []
+            var posts: PostResponse?
         }
         
         struct ViewModel {
