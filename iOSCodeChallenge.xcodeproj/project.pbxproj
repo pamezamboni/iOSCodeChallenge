@@ -16,6 +16,10 @@
 		3D58FC16225FBE7400372399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC15225FBE7400372399 /* Constants.swift */; };
 		3D58FC19225FBEA900372399 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC18225FBEA900372399 /* Post.swift */; };
 		3D58FC1C225FC08B00372399 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC1B225FC08B00372399 /* UIImageView+Extensions.swift */; };
+		3D58FC1E225FC15500372399 /* PostsViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC1D225FC15500372399 /* PostsViewModels.swift */; };
+		3D58FC20225FC17300372399 /* PostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC1F225FC17300372399 /* PostsInteractor.swift */; };
+		3D58FC22225FC1C200372399 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC21225FC1C200372399 /* PostsPresenter.swift */; };
+		3D58FC26225FC2E900372399 /* PostsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC25225FC2E900372399 /* PostsWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		3D58FC15225FBE7400372399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D58FC18225FBEA900372399 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3D58FC1B225FC08B00372399 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		3D58FC1D225FC15500372399 /* PostsViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModels.swift; sourceTree = "<group>"; };
+		3D58FC1F225FC17300372399 /* PostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsInteractor.swift; sourceTree = "<group>"; };
+		3D58FC21225FC1C200372399 /* PostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
+		3D58FC25225FC2E900372399 /* PostsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		3D58FBF8225FADFE00372399 /* iOSCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				3D58FC23225FC2D300372399 /* Service */,
 				3D58FC17225FBE9D00372399 /* Models */,
 				3D58FC14225FBE6500372399 /* Utils */,
 				3D58FC0B225FAE8F00372399 /* Scenes */,
@@ -87,6 +96,9 @@
 				3D58FC11225FBD7700372399 /* Cell */,
 				3D58FC0F225FAEF400372399 /* PostsViewController.swift */,
 				3D58FC0D225FAEB600372399 /* PostsViewController.storyboard */,
+				3D58FC1D225FC15500372399 /* PostsViewModels.swift */,
+				3D58FC1F225FC17300372399 /* PostsInteractor.swift */,
+				3D58FC21225FC1C200372399 /* PostsPresenter.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -122,6 +134,22 @@
 				3D58FC1B225FC08B00372399 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3D58FC23225FC2D300372399 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3D58FC24225FC2DA00372399 /* Workers */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3D58FC24225FC2DA00372399 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				3D58FC25225FC2E900372399 /* PostsWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +227,12 @@
 				3D58FC10225FAEF400372399 /* PostsViewController.swift in Sources */,
 				3D58FBFA225FADFE00372399 /* AppDelegate.swift in Sources */,
 				3D58FC13225FBD8B00372399 /* PostTableViewCell.swift in Sources */,
+				3D58FC20225FC17300372399 /* PostsInteractor.swift in Sources */,
+				3D58FC1E225FC15500372399 /* PostsViewModels.swift in Sources */,
 				3D58FC16225FBE7400372399 /* Constants.swift in Sources */,
+				3D58FC22225FC1C200372399 /* PostsPresenter.swift in Sources */,
 				3D58FC19225FBEA900372399 /* Post.swift in Sources */,
+				3D58FC26225FC2E900372399 /* PostsWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

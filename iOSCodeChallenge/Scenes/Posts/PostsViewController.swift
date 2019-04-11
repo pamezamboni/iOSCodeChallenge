@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PostsDisplayLogic: class {
+    func displayPosts(viewModel: PostsViewModels.Data.ViewModel)
+}
+
 class PostsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -22,9 +26,13 @@ class PostsViewController: UIViewController {
         }
     }
     
+    var interactor: PostsInteractor?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
+        setup()
+        getAllPosts()
     }
     
     func setupTable() {
@@ -33,6 +41,21 @@ class PostsViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 64
         tableView.tableFooterView = UIView()
+    }
+    
+    func setup() {
+        let interactor = PostsInteractor()
+        let presenter = PostsPresenter()
+        
+        interactor.presenter = presenter
+        presenter.viewController = self
+        
+        self.interactor = interactor
+    }
+    
+    func getAllPosts() {
+        let request = PostsViewModels.Data.Request()
+        interactor?.loadPosts(request: request)
     }
 }
 
@@ -56,6 +79,10 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.commentsCountLb.text = post.comments?.description
         return cell
     }
-    
-    
+}
+
+extension PostsViewController: PostsDisplayLogic {
+    func displayPosts(viewModel: PostsViewModels.Data.ViewModel) {
+        allPosts = viewModel.posts
+    }
 }
