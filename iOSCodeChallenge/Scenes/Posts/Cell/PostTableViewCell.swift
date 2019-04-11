@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PostCellDelegate: class {
+    func userWantToDissmissPost(fromCell cell:PostTableViewCell)
+}
+
 class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thumbnailImg: UIImageView!
@@ -16,6 +20,23 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLb: UILabel!
     @IBOutlet weak var entryDateLb: UILabel!
     @IBOutlet weak var commentsCountLb: UILabel!
+    
+    var postData: Post? {
+        didSet {
+            if let post = postData {
+                readStatusView.isHidden = !(post.unread)
+                titleLb.text = post.title
+                authorLb.text = post.author
+                entryDateLb.text = post.entryDate?.description
+                if let urlString = post.thumbnailUrlString {
+                    thumbnailImg?.download(from: urlString)
+                }
+                commentsCountLb.text = post.comments?.description
+            }
+        }
+    }
+    
+    weak var cellDelegate: PostCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +47,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func dismissPost(_ sender: Any) {
+        cellDelegate?.userWantToDissmissPost(fromCell: self)
     }
-    
     
 }

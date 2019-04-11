@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PostsListDelegate: class {
+    func userDidSelectedPost(_ postSelected: Post?)
+}
+
 protocol PostsDisplayLogic: class {
     func displayPosts(viewModel: PostsViewModels.Data.ViewModel)
 }
@@ -16,17 +20,23 @@ class PostsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var allPosts: [Post]? = [] {
+    var selectedCell: PostTableViewCell?
+    
+    var allPosts: [Post] = [] {
         didSet {
-            if allPosts != nil {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
     
     var interactor: PostsInteractor?
+    
+    weak var postsDelegate: PostsListDelegate?
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +49,7 @@ class PostsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 64
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
     
@@ -61,32 +71,60 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allPosts?.count ?? 0
+        return allPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let allPosts = allPosts, let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellIdentifier, for: indexPath) as? PostTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellIdentifier, for: indexPath) as? PostTableViewCell else {
             return UITableViewCell()
         }
         
-        let post = allPosts[indexPath.row]
-        cell.titleLb.text = post.title
-        cell.authorLb.text = post.author
-        cell.entryDateLb.text = post.entryDate?.description
-        if let urlString = post.thumbnailUrlString {
-            cell.thumbnailImg?.download(from: urlString)
-        }
-        cell.commentsCountLb.text = post.comments?.description
+        cell.postData = allPosts[indexPath.row]
+        cell.cellDelegate = self
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPost = allPosts[indexPath.row]
+        if let selected = tableView.cellForRow(at: indexPath) as? PostTableViewCell {
+            selectedCell = selected
+        }
+        
+        if selectedPost.unread {
+            selectedPost.unread = false
+            allPosts[indexPath.row] = selectedPost
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        
+        updateDetailPost(fromDataPost: selectedPost)
+        
+    }
+    
+    func updateDetailPost(fromDataPost dataPost: Post?) {
+        postsDelegate?.userDidSelectedPost(dataPost)
+        
+        if let detailViewController = postsDelegate as? PostDetailViewController{
+            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        }
     }
 }
 
 extension PostsViewController: PostsDisplayLogic {
     func displayPosts(viewModel: PostsViewModels.Data.ViewModel) {
-        allPosts = viewModel.posts
+        guard let posts = viewModel.posts else { return }
+        allPosts = posts
     }
+}
+
+extension PostsViewController: PostCellDelegate {
+    func userWantToDissmissPost(fromCell cell: PostTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            
+            updateDetailPost(fromDataPost: nil)
+            allPosts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
+    
+    
 }

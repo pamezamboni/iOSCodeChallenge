@@ -16,6 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        guard let splitViewController = window?.rootViewController as? UISplitViewController,
+            let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
+            let masterViewController = leftNavController.topViewController as? PostsViewController,
+            let detailViewController = splitViewController.viewControllers.last as? PostDetailViewController
+            else { fatalError() }
+        
+        masterViewController.postsDelegate = detailViewController
+        
+        detailViewController.navigationItem.leftItemsSupplementBackButton = true
+        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        
+        //Cell
+        let colorView = UIView()
+        colorView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        UITableViewCell.appearance().selectedBackgroundView = colorView
+        
+        //Navigation
+        UIBarButtonItem.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         return true
     }
 

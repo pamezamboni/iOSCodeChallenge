@@ -24,6 +24,7 @@
 		3D58FC2A225FC55300372399 /* NSError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC29225FC55300372399 /* NSError+Extensions.swift */; };
 		3D58FC2C225FC62900372399 /* PostsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC2B225FC62900372399 /* PostsAPIClient.swift */; };
 		3D58FC2E225FCE8900372399 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC2D225FCE8900372399 /* PostResponse.swift */; };
+		3D58FC30225FD8D900372399 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58FC2F225FD8D900372399 /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		3D58FC29225FC55300372399 /* NSError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Extensions.swift"; sourceTree = "<group>"; };
 		3D58FC2B225FC62900372399 /* PostsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPIClient.swift; sourceTree = "<group>"; };
 		3D58FC2D225FCE8900372399 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
+		3D58FC2F225FD8D900372399 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				3D58FC1D225FC15500372399 /* PostsViewModels.swift */,
 				3D58FC1F225FC17300372399 /* PostsInteractor.swift */,
 				3D58FC21225FC1C200372399 /* PostsPresenter.swift */,
+				3D58FC2F225FD8D900372399 /* PostDetailViewController.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				3D58FC13225FBD8B00372399 /* PostTableViewCell.swift in Sources */,
 				3D58FC20225FC17300372399 /* PostsInteractor.swift in Sources */,
 				3D58FC28225FC36600372399 /* APIClient.swift in Sources */,
+				3D58FC30225FD8D900372399 /* PostDetailViewController.swift in Sources */,
 				3D58FC1E225FC15500372399 /* PostsViewModels.swift in Sources */,
 				3D58FC2E225FCE8900372399 /* PostResponse.swift in Sources */,
 				3D58FC16225FBE7400372399 /* Constants.swift in Sources */,

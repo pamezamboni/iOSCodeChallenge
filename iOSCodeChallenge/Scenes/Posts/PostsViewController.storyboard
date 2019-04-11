@@ -10,16 +10,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Post Detail View Controller-->
         <scene sceneID="9pc-zV-hoD">
             <objects>
-                <viewController id="WtR-o2-zkX" sceneMemberID="viewController">
+                <viewController id="WtR-o2-zkX" customClass="PostDetailViewController" customModule="iOSCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a68-yM-0Us">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IPc-b5-89n">
+                                <rect key="frame" x="67.5" y="104" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="4pU-jt-hm5"/>
+                                    <constraint firstAttribute="width" secondItem="IPc-b5-89n" secondAttribute="height" multiplier="15:8" id="pf6-bv-aaY"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3j-6H-Uez">
+                                <rect key="frame" x="166.5" y="252" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S3j-6H-Uez" firstAttribute="top" secondItem="IPc-b5-89n" secondAttribute="bottom" constant="20" id="OM8-l7-s3g"/>
+                            <constraint firstItem="S3j-6H-Uez" firstAttribute="centerX" secondItem="IPc-b5-89n" secondAttribute="centerX" id="inu-3W-Phd"/>
+                            <constraint firstItem="IPc-b5-89n" firstAttribute="centerX" secondItem="a68-yM-0Us" secondAttribute="centerX" id="q6B-dK-AOe"/>
+                            <constraint firstItem="IPc-b5-89n" firstAttribute="top" secondItem="00j-DT-SQz" secondAttribute="top" constant="40" id="uOF-7P-wwo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="00j-DT-SQz"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="IPc-b5-89n" id="N4B-mJ-zYD"/>
+                        <outlet property="titleLb" destination="S3j-6H-Uez" id="q31-b3-Qz5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgj-s9-udt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -34,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iOu-Op-Z2u">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postCellIdentifier" rowHeight="154" id="gjj-4D-ddZ" customClass="PostTableViewCell" customModule="iOSCodeChallenge" customModuleProvider="target">
@@ -134,11 +159,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-53-Q9o">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lzu-UO-FEF"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss All Posts">
+                                    <color key="titleColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tm3-yI-RUN" firstAttribute="bottom" secondItem="iOu-Op-Z2u" secondAttribute="bottom" id="Bef-c5-XFF"/>
+                            <constraint firstItem="fLg-53-Q9o" firstAttribute="top" secondItem="iOu-Op-Z2u" secondAttribute="bottom" id="Bef-c5-XFF"/>
+                            <constraint firstItem="fLg-53-Q9o" firstAttribute="trailing" secondItem="Wj9-vD-AUJ" secondAttribute="trailing" id="ELm-Wj-cW7"/>
                             <constraint firstItem="iOu-Op-Z2u" firstAttribute="leading" secondItem="Wj9-vD-AUJ" secondAttribute="leading" id="L7k-T2-ipF"/>
+                            <constraint firstItem="fLg-53-Q9o" firstAttribute="leading" secondItem="Wj9-vD-AUJ" secondAttribute="leading" id="Vi6-UY-7pK"/>
+                            <constraint firstAttribute="bottom" secondItem="fLg-53-Q9o" secondAttribute="bottom" id="hbc-qq-MQ4"/>
                             <constraint firstAttribute="trailing" secondItem="iOu-Op-Z2u" secondAttribute="trailing" id="uCe-Ij-sfE"/>
                             <constraint firstItem="iOu-Op-Z2u" firstAttribute="top" secondItem="Wj9-vD-AUJ" secondAttribute="top" id="wQQ-8Y-6hx"/>
                         </constraints>
