@@ -44,5 +44,7 @@
 	</array>
 	<key>BaseURLKey</key>
 	<string>https://api.reddit.com</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need you permission to download images to your gallery</string>
 </dict>
 </plist>

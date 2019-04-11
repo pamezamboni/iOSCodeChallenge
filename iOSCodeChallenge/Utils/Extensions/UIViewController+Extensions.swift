@@ -25,4 +25,10 @@ extension UIViewController {
         customModal.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         return customModal
     }
+    
+    func showAlert(title: String, message: String, mainButton: String? = "OK"){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: mainButton, style: .default))
+        present(ac, animated: true)
+    }
 }
