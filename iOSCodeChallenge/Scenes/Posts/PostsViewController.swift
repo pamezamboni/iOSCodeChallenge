@@ -48,8 +48,8 @@ class PostsViewController: UIViewController {
     func setupTable() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 160
+        tableView.estimatedRowHeight = 64
         tableView.tableFooterView = UIView()
     }
     
@@ -66,6 +66,18 @@ class PostsViewController: UIViewController {
     func getAllPosts() {
         let request = PostsViewModels.Data.Request()
         interactor?.loadPosts(request: request)
+    }
+    
+    @IBAction func dismissAllPosts(_ sender: Any) {
+        tableView.beginUpdates()
+        let postCount = allPosts.count
+        allPosts.removeAll()
+        var allIndexPath: [IndexPath] = []
+        for index in 0..<postCount {
+            allIndexPath.append(IndexPath(row: index, section: 0))
+        }
+        tableView.deleteRows(at: allIndexPath, with: .left)
+        tableView.endUpdates()
     }
 }
 

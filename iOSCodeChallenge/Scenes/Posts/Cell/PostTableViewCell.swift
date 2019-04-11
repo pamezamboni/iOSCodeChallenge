@@ -27,11 +27,11 @@ class PostTableViewCell: UITableViewCell {
                 readStatusView.isHidden = !(post.unread)
                 titleLb.text = post.title
                 authorLb.text = post.author
-                entryDateLb.text = post.entryDate?.description
+                entryDateLb.text = post.entryDate?.correctSinceDateString()
                 if let urlString = post.thumbnailUrlString {
                     thumbnailImg?.download(from: urlString)
                 }
-                commentsCountLb.text = post.comments?.description
+                commentsCountLb.text = "\(post.comments ?? 0) comments"
             }
         }
     }
@@ -40,6 +40,7 @@ class PostTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        readStatusView.layer.cornerRadius = readStatusView.frame.size.width / 2
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

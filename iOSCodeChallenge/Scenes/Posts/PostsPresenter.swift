@@ -27,6 +27,7 @@ class PostsPresenter: PostsPresentationLogic {
                 post.author = item.data.author
                 post.thumbnailUrlString = item.data.thumbnail
                 post.comments = item.data.numComments
+                post.entryDate = item.data.created
                 allPosts.append(post)
             }
         }

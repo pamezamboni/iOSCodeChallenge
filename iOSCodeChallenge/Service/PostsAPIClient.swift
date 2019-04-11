@@ -24,9 +24,7 @@ extension APIClient {
                                                     if let data = responseRequest {
                                                         
                                                         do {
-                                                            
                                                             let result = try JSONDecoder().decode(PostResponse.self, from: data)
-                                                            print(result)
                                                             completion(result, nil)
                                                             
                                                         } catch {

@@ -20,10 +20,11 @@ class PostDetailViewController: UIViewController {
                     imageView.download(from: urlString)
                 }
                 
-                if titleLb.isHidden {
-                    titleLb.isHidden = false
-                }
+                if titleLb.isHidden { titleLb.isHidden = false }
+                if imageView.isHidden { imageView.isHidden = false }
                 
+            } else {
+                imageView.isHidden = true
             }
         }
     }

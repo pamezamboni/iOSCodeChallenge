@@ -12,7 +12,7 @@ class Post: NSObject {
 
     var title: String?
     var unread: Bool = true
-    var entryDate: Date?
+    var entryDate: Int?
     var author: String?
     var comments: Int?
     var thumbnailUrlString: String?
